@@ -23,17 +23,15 @@ export default function StarWarsCharacterListLayout({
     <StWrapper>
       <StFlex>
         <StFlex direction="column">
-          <div>{imageNode}</div>
-          <div>{titleNode}</div>
+          {imageNode}
+          {titleNode}
         </StFlex>
         <StFlex direction="column">
-          <div>{heightNode}</div>
-          <div>{genderNode}</div>
-          <div>{homeWorldNode}</div>
+          {heightNode}
+          {genderNode}
+          {homeWorldNode}
         </StFlex>
-        <StFlex marginLeft="auto">
-          <div>{learnMoreNode}</div>
-        </StFlex>
+        <StFlex marginLeft="auto">{learnMoreNode}</StFlex>
       </StFlex>
     </StWrapper>
   );
@@ -42,6 +40,9 @@ export default function StarWarsCharacterListLayout({
 const StWrapper = styled.div`
   border: 1px solid black;
   padding: 10px 30px;
+  * {
+    border: 1px solid red;
+  }
 `;
 
 const StFlex = styled.div<{

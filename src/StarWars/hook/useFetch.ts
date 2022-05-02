@@ -61,6 +61,7 @@ function useFetch<T = unknown>(serviceCall: () => Promise<T>): State<T> {
     return () => {
       cancelRequest.current = true;
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return state;
 }

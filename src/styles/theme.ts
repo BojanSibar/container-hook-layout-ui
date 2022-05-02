@@ -16,3 +16,5 @@ export const darkTheme: DefaultTheme = {
   primaryColor: "#fff",
   secondaryColor: "#cacaca",
 };
+
+export type ThemeVariants = "lightTheme" | "darkTheme";

@@ -1,4 +1,5 @@
 import React from "react";
+import { useCountRenders } from "../hook/useCountRerenders";
 import StarWarsCharacterListLayout from "../layout/StarWarsCharacterListLayout";
 import { Image, Link } from "./PrimitiveComponents";
 
@@ -21,6 +22,7 @@ function StarWarsCharacterList({
   gender,
   wikiURL,
 }: Props) {
+  useCountRenders("StarWarsCharacterList");
   return (
     <StarWarsCharacterListLayout
       imageNode={<Image src={image} alt={name} />}
@@ -30,11 +32,11 @@ function StarWarsCharacterList({
           learn more
         </Link>
       }
-      heightNode={<h5>{height} cm</h5>}
+      heightNode={<h5>{height} m</h5>}
       homeWorldNode={<h5>Home world: {homeWorld.toUpperCase()}</h5>}
       genderNode={<h5>{gender}</h5>}
     />
   );
 }
 
-export default StarWarsCharacterList;
+export default React.memo(StarWarsCharacterList);
