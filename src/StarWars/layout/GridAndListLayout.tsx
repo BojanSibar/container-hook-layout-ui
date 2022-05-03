@@ -11,7 +11,9 @@ interface Props
     "ref"
   > {
   variant: LayoutVariant;
-  headerNode: ReactNode;
+  rightHeaderNode: ReactNode;
+  leftHeaderNode: ReactNode;
+  animationNode: ReactNode;
   bodyNode: ReactNode;
 }
 
@@ -23,11 +25,18 @@ const produceTemplateColumn = (variant: LayoutVariant): string => {
 };
 
 export const GridAndListLayout = forwardRef<HTMLDivElement, Props>(
-  ({ variant, headerNode, bodyNode }, divRef) => {
+  (
+    { variant, leftHeaderNode, rightHeaderNode, bodyNode, animationNode },
+    divRef
+  ) => {
     const templateColumn = produceTemplateColumn(variant);
     return (
       <StWrapper ref={divRef}>
-        <StHeader>{headerNode}</StHeader>
+        <StHeader>
+          <div>{leftHeaderNode}</div>
+          <div>{rightHeaderNode}</div>
+        </StHeader>
+        <div>{animationNode}</div>
         <StBody templateColumn={templateColumn}>{bodyNode}</StBody>
       </StWrapper>
     );
@@ -37,12 +46,13 @@ export const GridAndListLayout = forwardRef<HTMLDivElement, Props>(
 const StWrapper = styled.div`
   background-color: ${({ theme }) => theme.primaryColor};
   color: ${({ theme }) => theme.secondaryColor};
+  padding: 0px 10px;
 `;
 
 const StHeader = styled.div`
   display: flex;
-  flex-direction: row-reverse;
-  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const StBody = styled.div<{ templateColumn: string }>`

@@ -38,11 +38,8 @@ export default function StarWarsCharacterListLayout({
 }
 
 const StWrapper = styled.div`
-  border: 1px solid black;
+  border: 1px solid ${({ theme }) => theme.secondaryColor};
   padding: 10px 30px;
-  * {
-    border: 1px solid red;
-  }
 `;
 
 const StFlex = styled.div<{

@@ -23,15 +23,18 @@ export const Link = styled.a`
 `;
 
 export const Button = styled.button<{ isSelected?: boolean }>`
-  background-color: #e7e7e7; /* Grey */
-  border: solid black;
-  border-width: ${({ isSelected }) => (!!isSelected ? "1px" : "0")};
-  color: black;
+  background-color: ${({ theme }) => theme.secondaryColor}; /* Grey */
+  border: solid transparent;
+  border-color: ${({ isSelected, theme }) =>
+    !!isSelected ? theme.skeletonColor : "transparent"};
   padding: 15px 32px;
+  color: ${({ theme }) => theme.skeletonColor};
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin: 4px 2px;
   cursor: pointer;
+  outline: none;
+  border-radius: 4px;
 `;
